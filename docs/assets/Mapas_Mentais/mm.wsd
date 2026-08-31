@@ -2,58 +2,49 @@
 skinparam monochrome true
 skinparam ArrowColor #000000
 skinparam NodeFontSize 14
-
-* Censo Demográfico 2022
-** Dados Coletados
-*** 1. Identificação do Domicílio
-    **** UF/Município/Distrito
-    **** Espécie (Permanente/Improvisado/Coletivo)
-    **** Tipo (Casa/Apartamento/Tenda/etc.)
-*** 2. Moradores
-    **** Quantidade total
-    **** Crianças (0-9 anos)
-    **** _Lista por nome_
-    **** Sexo/Data Nascimento/Idade
-    **** Parentesco com responsável
-*** 3. Características do Domicílio
-    **** Água (Rede/Poço/Chuva)
-    **** Banheiros/Esgoto
-    **** Coleta de Lixo
-*** 4. Identificação Étnico-Racial
-    **** Cor/Raça (Branca/Preta/Parda/Indígena)
-    **** Línguas Indígenas
-    **** Comunidades Quilombolas
-*** 7. Trabalho e Renda
-    **** Rendimento do Responsável
-    **** Faixas de Renda
-*** 8. Mortalidade
-    **** Óbitos (2019-2022)
-    **** Idade/Causa
-
-** Fluxo do Questionário
-*** _Seção 1 → Seção 2_
-    **** Se domicílio ocupado
-*** _Seção 2 → Seção 3_
-    **** Se domicílio permanente
-*** _Seção 4 condicional_
-    **** Indígena? → Etnia
-    **** Quilombola? → Comunidade
-
-** Tecnologias
-*** Coleta
-    **** Formulário Digital (API Django)
-    **** Sincronização Offline
-*** Processamento
-    **** Validação Automática
-    **** Georreferenciamento
-*** Análise
-    <<dashboard>>
-    Dashboard Interativo
-    Relatórios CSV/PDF
-
-** Atores Principais
-*** Entrevistador
-*** Responsável pelo Domicílio
-*** IBGE (Coordenação)
-*** Equipe de TI
+* Teste de Progresso
+** Inscrição
+*** Autenticação
+**** Credencial institucional
+**** Perfis de acesso (aluno, professor, coordenação, administração)
+*** Período de Inscrição
+**** Abertura e fechamento por data
+*** Escolha da Disciplina
+**** Nota bônus (0 a 1)
+**** Restrita às disciplinas matriculadas
+**** Alterável enquanto o período estiver aberto
+** Logística e Ensalamento
+*** Campus e Salas
+**** Capacidade nominal e de prova
+**** Acessibilidade
+*** Distribuição dos Alunos
+**** Automática por campus e capacidade
+**** Balanceada
+**** Atendimento especial → sala acessível
+*** Escala de Professores
+**** Aplicador por sala
+**** Sem alocação dupla
+**** Fiscal reserva
+*** Materiais
+**** Cálculo por sala
+*** Consulta do Aluno
+**** Local de prova
+** Notas e Relatórios
+*** Presença
+**** Registro de presença e ausência
+*** Notas
+**** Importação
+**** Conversão para escala de bônus
+**** Vínculo à disciplina escolhida
+**** Ausentes não recebem bônus
+*** Visualização
+**** Professor vê alunos e notas das suas disciplinas
+*** Relatórios
+**** Adesão por curso, período e campus
+**** Ocupação das salas
+**** Desempenho consolidado
+*** Segurança
+**** Auditoria de alterações
+**** Proteção de dados (LGPD)
+**** Acesso restrito por perfil
 @enduml
