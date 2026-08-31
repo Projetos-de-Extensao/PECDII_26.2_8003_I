@@ -71,6 +71,95 @@ Esta etapa do brainstorm teve como objetivo discutir as funcionalidades relacion
 A primeira parte do brainstorm permitiu identificar os requisitos relacionados à entrada do aluno no sistema, ao processo de inscrição e à seleção da disciplina responsável por receber o bônus do Teste de Progresso.
 </p>
 
+# Brainstorm — Parte 2
+
+## Tema
+
+**Teste de Progresso — Ensalamento, professores e recursos**
+
+## Introdução
+
+<p align="justify">
+Esta etapa do brainstorm foi direcionada à logística necessária para realização presencial do Teste de Progresso, incluindo distribuição dos alunos entre as salas, escala dos professores aplicadores e gerenciamento dos materiais necessários.
+</p>
+
+## Perguntas
+
+### 4. Como deverá funcionar a distribuição dos alunos entre as salas?
+
+<p align="justify">
+
+<b>Integrante 1</b> - O sistema deve distribuir automaticamente os alunos inscritos considerando o campus e a capacidade das salas disponíveis.
+
+<b>Integrante 2</b> - A distribuição deverá ser equilibrada. Por exemplo, caso existam 120 alunos e três salas adequadas, o sistema poderá distribuir 40 alunos em cada sala.
+
+<b>Integrante 3</b> - O sistema não poderá ultrapassar a capacidade definida para cada sala e deverá considerar alunos que necessitam de atendimento especial.
+
+</p>
+
+---
+
+### 5. Como deverá funcionar a escala de professores aplicadores?
+
+<p align="justify">
+
+<b>Integrante 1</b> - A administração deverá registrar quais professores estão disponíveis para participar da aplicação.
+
+<b>Integrante 2</b> - Cada sala ocupada deverá possuir pelo menos um professor aplicador.
+
+<b>Integrante 3</b> - Um mesmo professor não poderá ser alocado em duas salas no mesmo horário e poderão existir professores reservas.
+
+</p>
+
+---
+
+### 6. Como deverão ser gerenciados os materiais necessários para a prova?
+
+<p align="justify">
+
+<b>Integrante 1</b> - O sistema deverá calcular a quantidade de materiais necessária considerando o número de alunos presentes em cada sala.
+
+<b>Integrante 2</b> - Poderão ser considerados materiais como cadernos de prova, cartões-resposta, listas de presença e envelopes.
+
+<b>Integrante 3</b> - O sistema poderá acrescentar uma quantidade de reserva e gerar documentos como lista de presença, mapa de sala e identificação da sala.
+
+</p>
+
+## Requisitos elicitados
+
+| ID   | Descrição                                                                        |
+| ---- | -------------------------------------------------------------------------------- |
+| BS10 | O sistema deve permitir o cadastro de campus e salas.                            |
+| BS11 | Cada sala deve possuir informações de capacidade e acessibilidade.               |
+| BS12 | O sistema deve distribuir automaticamente os alunos entre as salas.              |
+| BS13 | A distribuição deve respeitar a capacidade individual de cada sala.              |
+| BS14 | O sistema deve buscar uma distribuição equilibrada dos alunos.                   |
+| BS15 | Alunos com atendimento especial devem ser direcionados para ambientes adequados. |
+| BS16 | O sistema deve alertar quando não houver capacidade suficiente.                  |
+| BS17 | O sistema deve permitir cadastrar professores e suas disponibilidades.           |
+| BS18 | Toda sala utilizada deve possuir pelo menos um professor aplicador.              |
+| BS19 | Um professor não poderá ser alocado em duas salas simultaneamente.               |
+| BS20 | O sistema deve permitir professores reservas.                                    |
+| BS21 | O sistema deve calcular a quantidade necessária de materiais por sala.           |
+| BS22 | O sistema deve gerar lista de presença, mapa de sala e identificação das salas.  |
+| BS23 | O aluno deve conseguir consultar onde realizará sua prova.                       |
+
+## Conclusão
+
+<p align="justify">]
+]
+
+
+
+
+
+
+
+
+
+
+A segunda parte do brainstorm possibilitou levantar requisitos relacionados principalmente à logística da aplicação presencial do Teste de Progresso, buscando automatizar atividades que atualmente exigem grande esforço manual da instituição.
+</p>
 
 # Brainstorm — Parte 3
 
