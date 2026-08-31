@@ -70,3 +70,96 @@ Esta etapa do brainstorm teve como objetivo discutir as funcionalidades relacion
 <p align="justify">
 A primeira parte do brainstorm permitiu identificar os requisitos relacionados à entrada do aluno no sistema, ao processo de inscrição e à seleção da disciplina responsável por receber o bônus do Teste de Progresso.
 </p>
+
+
+# Brainstorm — Parte 3
+
+## Tema
+
+**Teste de Progresso — Notas, segurança e relatórios**
+
+## Introdução
+
+<p align="justify">
+Esta etapa do brainstorm teve como foco os processos posteriores à organização da prova, envolvendo presença dos alunos, lançamento e consulta das notas, disponibilização das informações para cada usuário, proteção de dados e geração de relatórios administrativos.
+</p>
+
+## Perguntas
+
+### 7. Como deverá funcionar o lançamento e a consulta das notas?
+
+<p align="justify">
+
+<b>Integrante 1</b> - Após a realização do teste, as notas deverão ser importadas para o sistema e convertidas para a escala de bônus utilizada pela instituição.
+
+<b>Integrante 2</b> - A nota deverá ser vinculada automaticamente à disciplina escolhida pelo aluno durante sua inscrição.
+
+<b>Integrante 3</b> - Alunos ausentes não deverão receber o bônus e alterações realizadas nas notas deverão ser registradas.
+
+</p>
+
+---
+
+### 8. Quais informações serão importantes para cada usuário?
+
+<p align="justify">
+
+<b>Integrante 1</b> - O aluno deverá conseguir consultar sua inscrição, disciplina escolhida, data, campus, sala e resultado.
+
+<b>Integrante 2</b> - O professor deverá visualizar os alunos que escolheram suas disciplinas e as respectivas notas.
+
+<b>Integrante 3</b> - A coordenação e a Pró-Reitoria deverão possuir informações consolidadas sobre inscrições, ocupação das salas, professores e desempenho.
+
+</p>
+
+---
+
+### 9. Como o sistema deverá tratar acessibilidade e dados pessoais?
+
+<p align="justify">
+
+<b>Integrante 1</b> - Durante a inscrição, o aluno deverá conseguir solicitar atendimento especial quando necessário.
+
+<b>Integrante 2</b> - Informações relacionadas a atendimento especial deverão possuir acesso restrito.
+
+<b>Integrante 3</b> - O sistema deverá coletar somente os dados necessários e limitar o acesso às informações de acordo com o perfil de cada usuário.
+
+</p>
+
+---
+
+### 10. Quais relatórios seriam importantes para a instituição?
+
+<p align="justify">
+
+<b>Integrante 1</b> - Relatórios de quantidade de inscritos por curso, período e campus.
+
+<b>Integrante 2</b> - Relatórios de ocupação das salas e professores responsáveis pela aplicação.
+
+<b>Integrante 3</b> - Relatórios de notas e desempenho consolidado, permitindo acompanhar a evolução dos estudantes entre diferentes aplicações do Teste de Progresso.
+
+</p>
+
+## Requisitos elicitados
+
+| ID   | Descrição                                                                                       |
+| ---- | ----------------------------------------------------------------------------------------------- |
+| BS24 | O sistema deve permitir registrar presença e ausência dos alunos.                               |
+| BS25 | O sistema deve permitir importar as notas do Teste de Progresso.                                |
+| BS26 | A nota deve ser convertida para a escala de bônus definida pela instituição.                    |
+| BS27 | A nota deve ser vinculada à disciplina escolhida pelo aluno.                                    |
+| BS28 | Alunos ausentes não devem receber o bônus.                                                      |
+| BS29 | O professor deve visualizar os alunos vinculados às suas disciplinas e respectivas notas.       |
+| BS30 | O sistema deve manter registro das alterações realizadas nas notas.                             |
+| BS31 | O sistema deve fornecer relatórios de adesão por curso, período e campus.                       |
+| BS32 | O sistema deve fornecer informações sobre ocupação das salas.                                   |
+| BS33 | O sistema deve permitir consultar dados consolidados de desempenho.                             |
+| BS34 | O sistema deve restringir o acesso às informações de acordo com o perfil do usuário.            |
+| BS35 | O sistema deve tratar os dados pessoais conforme os requisitos de proteção de dados aplicáveis. |
+| BS36 | O sistema deve manter mecanismos de auditoria para alterações relevantes.                       |
+
+## Conclusão
+
+<p align="justify">
+A terceira parte do brainstorm permitiu identificar os requisitos relacionados ao acompanhamento do Teste de Progresso após sua organização, incluindo registro de presença, lançamento das notas, disponibilização de informações aos diferentes usuários, proteção dos dados e geração de relatórios para apoio à gestão acadêmica.
+</p>
