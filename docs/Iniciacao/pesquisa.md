@@ -103,15 +103,163 @@ O projeto nasce dessa dor operacional: transformar um processo semestral, manual
 
 **Conclusão da análise.** O mercado cobre bem as pontas isoladas — aplicar prova, guardar nota, alocar sala — mas não há solução acessível que amarre as três em um fluxo único com a regra de negócio específica da instituição: inscrição voluntária, escolha da disciplina de destino da nota e distribuição por campus. É exatamente nessa lacuna que o projeto se posiciona, com a vantagem de ser desenvolvido sob medida para as regras da Pró-Reitoria Acadêmica e sem custo de licenciamento por aluno.
 
----
+### 2.6 Funcionalidades
 
-### 2.6 Levantamento de Legislação
+Prioridade em MoSCoW: M obrigatória, S desejável, C opcional.
 
-#### 2.6.1 Visão geral das normas aplicáveis
+Módulo 1 — Acesso e Cadastro Base
+Código	Funcionalidade	Prior.
+RF-01	Autenticação com credencial institucional, com SSO quando disponível	M
+RF-02	Perfis de acesso: aluno, professor, coordenação, administração (RBAC)	M
+RF-03	Importação de alunos, disciplinas, turmas e matrículas via CSV do sistema acadêmico	M
+RF-04	Cadastro manual de exceções (aluno em situação especial, disciplina não importada)	S
+Módulo 2 — Edição do Teste
+Código	Funcionalidade	Prior.
+RF-05	Criar edição do teste: semestre, data, horário, campi e cursos participantes	M
+RF-06	Abrir e fechar o período de inscrição por data	M
+RF-07	Configurar a regra do bônus (faixa 0 a 1 e limite de disciplinas por aluno)	M
+RF-08	Clonar configuração de uma edição anterior	C
+Módulo 3 — Inscrição (Parte I)
+Código	Funcionalidade	Prior.
+RF-09	Aluno realiza inscrição na edição aberta	M
+RF-10	Seleção da disciplina de destino da nota, listando apenas as disciplinas em que está matriculado no semestre	M
+RF-11	Solicitação de atendimento especial, com consentimento específico e destacado	M
+RF-12	Emissão de comprovante de inscrição	S
+RF-13	Cancelamento ou troca de disciplina até o fechamento do período	S
+RF-14	Notificação por e-mail de confirmação e de local de prova	S
+Módulo 4 — Alocação de Recursos (Parte II)
+Código	Funcionalidade	Prior.
+RF-15	CRUD de campus e salas com capacidade nominal, capacidade de prova e acessibilidade	M
+RF-16	Cadastro de professores com campus de lotação e disponibilidade na data	M
+RF-17	Geração automática do ensalamento respeitando capacidade e campus	M
+RF-18	Ajuste manual da alocação, com registro de quem alterou e por quê	M
+RF-19	Escala automática de aplicadores por sala, com fiscal reserva	M
+RF-20	Cálculo de material por sala: cadernos, cartões-resposta, listas e envelopes, com margem de reserva	S
+RF-21	Emissão de mapa de sala, lista de presença e etiqueta de porta em PDF	M
+RF-22	Consulta "onde faço prova" pelo aluno	M
+RF-23	Alerta de capacidade insuficiente antes do fechamento das inscrições	S
+Módulo 5 — Notas
+Código	Funcionalidade	Prior.
+RF-24	Registro de presença e ausência por sala	M
+RF-25	Importação da nota bruta e conversão para a escala de 0 a 1	M
+RF-26	Espelho por professor com os alunos que escolheram sua disciplina e a nota a lançar	M
+RF-27	Exportação das notas em CSV para o sistema acadêmico	M
+RF-28	Bloqueio de lançamento para aluno ausente	M
+Módulo 6 — Relatórios e Autoatendimento
+Código	Funcionalidade	Prior.
+RF-29	Adesão por curso, período e campus	M
+RF-30	Taxa de ocupação das salas e resumo da escala	S
+RF-31	Desempenho médio por curso e período, em dados agregados	S
+RF-32	Tela "Meus dados" do aluno, com exportação do próprio histórico	M
+RF-33	Trilha de auditoria de toda criação e alteração de nota	M
+RF-34	Comparativo longitudinal entre edições (evolução da coorte)	C
+Requisitos não funcionais
+Código	Requisito
+RNF-01	Aplicação web responsiva, utilizável em celular no dia da prova
+RNF-02	Conformidade com a LGPD, conforme detalhado em 2.9.2
+RNF-03	Suportar pico de acessos no primeiro e no último dia de inscrição
+RNF-04	Gerar o ensalamento de uma edição completa em tempo aceitável para uso interativo
+RNF-05	Trilha de auditoria imutável e backup com teste periódico de restauração
+RNF-06	Acessibilidade seguindo WCAG 2.1 nível AA
+RNF-07	Ambientes de teste e homologação com dados mascarados ou sintéticos
+
+### 2.7 Alocação de Recursos
+
+Esta é a parte mais complexa do sistema e corresponde à Parte II do levantamento. O problema é: distribuir N inscritos em M salas de capacidades diferentes, garantindo fiscalização e material suficientes, respeitando restrições de campus e acessibilidade.
+
+#### 2.7.1 Recursos gerenciados
+Recurso	Atributos relevantes	Papel na alocação
+Sala	Código, campus, bloco, andar, capacidade nominal, capacidade de prova, acessível (sim/não), possui projetor/relógio	Container com capacidade limitada
+Professor	Matrícula, campus de lotação, disponibilidade na data e turno, papel (aplicador, reserva, coordenador de andar)	Recurso escasso vinculado 1:N a salas
+Aluno	Matrícula, curso, período, campus, disciplina escolhida, necessidade de atendimento especial	Item a ser distribuído
+Recurso material	Caderno de prova, cartão-resposta, lista de presença, envelope/lacre, canetas	Consumível calculado a partir da alocação
+Campus	Endereço, salas disponíveis na data	Fronteira rígida da alocação
+
+#### 2.7.2 Restrições
+
+Rígidas — a alocação é inválida se violadas:
+
+Total de alunos em uma sala ≤ capacidade de prova da sala.
+Aluno alocado apenas em sala do campus em que está matriculado.
+Toda sala ocupada tem ao menos um aplicador designado.
+Um professor não pode ser escalado em duas salas no mesmo horário.
+Aluno com atendimento especial deferido vai para sala acessível.
+Nenhum inscrito confirmado fica sem sala.
+
+Flexíveis — buscam-se, mas admitem violação:
+
+Equilibrar a ocupação entre as salas em vez de lotar uma e esvaziar outra. É exatamente a regra do quadro: com 120 inscritos e 3 salas, o resultado desejado é 40/40/40, não 50/50/20.
+Misturar cursos e períodos na mesma sala, reduzindo colaboração indevida.
+Minimizar o número de salas usadas, já que cada sala aberta consome um fiscal.
+Escalar o professor no campus onde ele já leciona, reduzindo deslocamento.
+
+Observe que 7 e 9 competem entre si: equilibrar tende a abrir mais salas, minimizar salas tende a lotar. A decisão precisa ser um parâmetro configurável pela Pró-Reitoria, não uma regra fixa no código.
+
+#### 2.7.3 Lógica de alocação proposta
+
+Heurística em quatro fases, sem necessidade de solver externo:
+
+Apurar demanda. Agrupar inscritos confirmados por campus. Separar quem tem atendimento especial deferido.
+Selecionar salas. Ordenar as salas do campus por capacidade de prova decrescente e selecionar até cobrir a demanda com folga de segurança (parâmetro, sugestão de 10%). Reservar antes as salas acessíveis para o grupo do passo 1.
+Distribuir de forma balanceada. Calcular n_salas = teto(inscritos ÷ capacidade_média) e alvo_por_sala = teto(inscritos ÷ n_salas), preenchendo em round-robin e nunca ultrapassando a capacidade individual de cada sala. Intercalar alunos de cursos e períodos diferentes atende à restrição flexível 8.
+Escalar aplicadores e material. Um aplicador por sala ocupada, mais reservas por andar; material calculado como alunos_na_sala + margem.
+
+Capacidade nominal ≠ capacidade de prova. Uma sala de 50 lugares normalmente comporta bem menos alunos em situação de prova, por causa do espaçamento entre carteiras. O sistema deve guardar os dois números e usar sempre o segundo na alocação — isso não estava explícito no levantamento e precisa ser confirmado com a Pró-Reitoria.
+
+#### 2.7.4 Cenários de teste da regra
+Cenário	Entrada	Resultado esperado
+Divisão exata (caso do quadro)	120 inscritos, 3 salas de 40	40 / 40 / 40 — ocupação de 100%
+Divisão com resto	127 inscritos, 3 salas de 45	43 / 42 / 42 — diferença máxima de 1 aluno entre salas
+Capacidade insuficiente	130 inscritos, 3 salas de 40	Bloquear a geração e alertar: faltam 10 vagas; sugerir abrir 4ª sala
+Sala heterogênea	100 inscritos; salas de 60, 30 e 20	Respeitar o teto individual: 60 / 30 / 10, sem forçar média
+Atendimento especial	3 alunos com deferimento	Alocados em sala acessível antes da distribuição geral
+Fiscal insuficiente	4 salas ocupadas, 3 professores disponíveis	Alertar a lacuna antes da publicação da escala
+
+#### 2.7.5 Entidades previstas (insumo para a fase de Elaboração)
+
+Campus 1:N Sala · Edicao 1:N Inscricao · Aluno 1:N Inscricao · Inscricao 1:1 Disciplina escolhida · Professor N:M Disciplina · Alocacao (inscricao, sala, edicao, ordem/carteira) · EscalaAplicacao (professor, sala, edicao, papel) · RecursoMaterial N:M Sala por edição, com quantidade.
+
+O par Alocacao e EscalaAplicacao são entidades associativas com atributo próprio — vale destacá-las no diagrama de classes.
+
+### 2.8 Análise de Aplicações e Mercado
+
+#### 2.8.1 Como o instrumento funciona hoje no Brasil
+
+O Teste de Progresso é um exame aplicado com regularidade, geralmente de múltipla escolha, com a finalidade de acompanhar a evolução do estudante de maneira progressiva ao longo do curso. Funciona como instrumento de controle de qualidade do currículo e, pelas aplicações sucessivas, permite verificar o progresso na aquisição de conhecimento tanto no plano individual quanto no das coortes. A prática é mais madura na saúde: na Medicina o teste é aplicado anualmente sob coordenação da Associação Brasileira de Educação Médica (Abem), em consórcios regionais que permitem comparação entre instituições. Existem também consórcios interinstitucionais em São Paulo que aplicam o teste a cursos como Enfermagem, Farmácia, Fisioterapia, Nutrição, Odontologia, Psicologia e Educação Física, e adaptações do modelo já publicadas para Fisioterapia — sinal de que levar o instrumento para fora da saúde é caminho consolidado.
+
+#### 2.8.2 Aplicações similares
+Aplicação	O que faz	O que aproveitar	Limitação para o nosso caso
+Plataforma A (Grupo A / SAGAH)	Avaliações para IES com banco de questões alinhado a ENADE e DCNs, TRI e ensalamento da instituição	É a referência mais próxima da Parte II: prova o valor do ensalamento integrado à avaliação	Suíte comercial ampla, licenciada por aluno, sem a regra do bônus na disciplina escolhida
+Fábrica de Provas	Banco com centenas de milhares de questões, correção automática, recursos antifraude e registro auditável de cada ação	O conceito de trilha auditável ponta a ponta é diretamente reaproveitável no nosso RF-33	Foco no ciclo da prova, não na logística de recursos
+Educat	Banco de questões com histórico de uso, calibração de itens e análise por Teoria Clássica dos Testes	Mostra o que a Pró-Reitoria vai querer na fase de relatórios: dificuldade e discriminação por item	Cobre a análise, não a inscrição nem a alocação
+QuestCore	Montagem de avaliações, aplicação online e presencial, correção automatizada e integrações com LMS/ERP	Padrão de integração com ERP acadêmico, tema do nosso RF-03 e RF-27	Solução de fábrica de software, com custo e dependência de fornecedor
+Minha Prova	Criação, aplicação e correção com leitura óptica de cartões-resposta, geração de versões A/B/C/D e acompanhamento longitudinal	Leitura óptica de cartão é o caminho natural para alimentar o RF-25 sem digitação	Voltada principalmente à educação básica
+Moodle / Google Forms	Aplicação de questionários e correção objetiva	Custo zero e já presentes na instituição	Não tratam sala, campus, capacidade, fiscal nem material
+UniTime / FET (open source)	Alocação de turmas e horários em salas	Algoritmos de alocação com restrições rígidas e flexíveis, base conceitual da seção 2.7	Genéricos, sem vínculo com inscrição e nota bônus
+ERPs acadêmicos (TOTVS, Lyceum, Jacad)	Matrícula, diário de classe e lançamento de nota	Fonte de dados via importação	Não possuem módulo de Teste de Progresso
+
+#### 2.8.3 Matriz comparativa de funcionalidades
+Funcionalidade	Plataformas de avaliação	LMS	Timetabling	ERP acadêmico	Nosso projeto
+Inscrição voluntária na edição	Parcial	Parcial	Não	Não	Sim
+Escolha da disciplina de destino da nota	Não	Não	Não	Não	Sim
+Bônus de 0 a 1 na média	Não	Não	Não	Parcial	Sim
+Ensalamento por capacidade e campus	Parcial	Não	Sim	Não	Sim
+Escala de professores aplicadores	Não	Não	Parcial	Não	Sim
+Dimensionamento de material	Não	Não	Não	Não	Sim
+Banco de questões e correção	Sim	Sim	Não	Não	Fora de escopo
+Análise de item (TRI/TCT)	Sim	Parcial	Não	Não	Fora de escopo
+
+#### 2.8.4 Conclusão da análise
+
+O mercado resolve bem as pontas isoladas — elaborar e corrigir prova, guardar nota, alocar sala — e a Plataforma A chega perto ao juntar avaliação com ensalamento. Nenhuma das soluções pesquisadas, porém, cobre a regra de negócio específica levantada com o stakeholder: inscrição voluntária com escolha da disciplina que receberá um bônus de 0 a 1, combinada com alocação de salas, fiscais e material por campus. É nessa lacuna que o projeto se posiciona, com a vantagem de ser sob medida e sem custo de licenciamento por aluno. A decisão consciente é não competir em banco de questões e análise psicométrica, onde os fornecedores já são fortes, e sim integrar-se a eles por importação de notas.
+
+### 2.9 Levantamento de Legislação
+
+#### 2.9.1 Visão geral das normas aplicáveis
 
 | Norma | O que exige | Onde impacta o sistema |
 |---|---|---|
-| **Lei nº 13.709/2018 (LGPD)** | Regras para todo tratamento de dados pessoais | Todo o sistema — detalhado em 2.6.2 |
+| **Lei nº 13.709/2018 (LGPD)** | Regras para todo tratamento de dados pessoais | Todo o sistema — detalhado em 2.9.2 |
 | **Resolução CD/ANPD nº 15/2024** | Procedimento de comunicação de incidente de segurança | Plano de resposta a incidentes e registro de logs |
 | **Lei nº 10.861/2004 (SINAES)** | Institui a avaliação das instituições, dos cursos e do desempenho dos estudantes | Resultados agregados alimentam a autoavaliação da CPA; exige rastreabilidade dos dados |
 | **Lei nº 9.394/1996 (LDB), art. 47 e 53** | Autonomia da IES para fixar critérios de avaliação e aproveitamento | Fundamenta a regra do bônus de 0 a 1, desde que prevista em regulamento interno |
@@ -121,7 +269,7 @@ O projeto nasce dessa dor operacional: transformar um processo semestral, manual
 | **Lei nº 12.965/2014 (Marco Civil), art. 15** | Guarda de registros de acesso a aplicações por 6 meses | Política de logs do sistema |
 | **Regulamento interno / Resolução do Colegiado** | Institui o Teste de Progresso na IES | Fonte formal das regras de negócio — documento a solicitar ao stakeholder |
 
-#### 2.6.2 LGPD aplicada ao projeto
+#### 2.9.2 LGPD aplicada ao projeto
 
 **a) Papéis definidos (art. 5º, VI a VIII).** A IES é a **controladora** dos dados, pois define as finalidades e os meios do tratamento. A equipe de desenvolvimento e eventuais serviços de hospedagem atuam como **operadores**, tratando dados em nome da controladora. A IES já deve possuir um **encarregado (DPO)**, cujo contato precisa aparecer no aviso de privacidade da tela de inscrição (art. 41, § 1º).
 
@@ -191,11 +339,11 @@ O art. 19, § 1º, II fixa **prazo de 15 dias** para resposta completa ao titula
 
 **k) Governança e sanções.** Recomenda-se, antes do desenvolvimento: (i) inclusão do sistema no **registro das operações de tratamento** da IES (art. 37); (ii) elaboração de **Relatório de Impacto à Proteção de Dados Pessoais — RIPD** (art. 38), justificada pelo volume de titulares e pela presença de dado sensível; (iii) contrato ou termo com cláusulas de proteção de dados com qualquer operador de hospedagem, incluindo verificação de transferência internacional (art. 33) se o servidor estiver fora do Brasil. O descumprimento sujeita a IES às sanções do art. 52, entre elas multa de até 2% do faturamento no Brasil, limitada a R$ 50 milhões por infração, além de bloqueio ou eliminação dos dados envolvidos.
 
-#### 2.6.3 Pendências para a próxima etapa
+#### 2.9.3 Pendências para a próxima etapa
 
 1. Obter junto à Pró-Reitoria a resolução interna que institui o Teste de Progresso e define a regra do bônus de 0 a 1.
 2. Obter o aviso de privacidade e a política de segurança da informação vigentes na IES, para herdar os textos em vez de criar novos.
-3. Identificar o encarregado (DPO) da instituição e validar com ele as bases legais propostas em 2.6.2 (b).
+3. Identificar o encarregado (DPO) da instituição e validar com ele as bases legais propostas em 2.9.2 (b).
 4. Confirmar se o sistema será hospedado em infraestrutura própria da IES ou em nuvem de terceiro, o que muda a análise de operador e de transferência internacional.
 
 ---
@@ -212,4 +360,3 @@ O art. 19, § 1º, II fixa **prazo de 15 dias** para resposta completa ao titula
 - MEC. Portaria nº 315, de 4 de abril de 2018; Portaria nº 332, de 13 de março de 2020; Portaria nº 360, de 18 de maio de 2022.
 - PASCON, D. et al. Teste de progresso como instrumento de avaliação em saúde: uma revisão integrativa. Revista Meta: Avaliação, v. 14, n. 44, 2022.
 - Reflexões sobre a utilização do Teste de Progresso na avaliação programática do estudante. Revista Brasileira de Educação Médica.
-- Teste de Progresso e mudança curricular: trilhas do curso de Medicina da Universidade de Brasília. Revista Brasileira de Educação Médica.
