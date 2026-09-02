@@ -1,14 +1,388 @@
+' ============================================================
+' Sistema do Teste de Progresso
+' 1) Visão geral do sistema (mapa mental)
+' 2) Casos de uso descritivos (mapa mental)
+' 3) Diagrama de caso de uso
+' 4) Diagrama de classes conceitual
+' ============================================================
+
 @startmindmap
-* Debian
-** Ubuntu
-*** Linux Mint
-*** Kubuntu
-*** Lubuntu
-*** KDE Neon
-** LMDE
-** SolydXK
-** SteamOS
-** Raspbian with a very long name
-*** <s>Raspmbc</s> => OSMC
-*** <s>Raspyfi</s> => Volumio
+* Sistema do Teste de Progresso
+** Atores
+*** Aluno
+*** Professor
+*** Coordenação de curso
+*** Administração acadêmica
+*** Sistema acadêmico (apoio)
+*** Serviço de e-mail (apoio)
+** Acesso
+*** UC01 Autenticar usuário
+** Inscrição e autoatendimento
+*** UC02 Realizar inscrição
+*** UC03 Alterar ou cancelar inscrição
+*** UC04 Consultar inscrição, local e resultado
+*** UC15 Consultar e exportar próprios dados
+** Configuração e logística
+*** UC05 Gerenciar edição
+*** UC06 Importar dados acadêmicos
+*** UC07 Gerenciar campi, salas e disponibilidades
+*** UC08 Gerar ensalamento e escala
+*** UC09 Ajustar alocação com justificativa
+** Aplicação, notas e gestão
+*** UC10 Registrar presença
+*** UC11 Processar notas e bônus
+*** UC12 Consultar espelho de notas
+*** UC13 Consultar escala de aplicação
+*** UC14 Consultar relatórios e indicadores
+** Principais entidades
+*** Edição
+*** Inscrição
+*** Turma / Matrícula
+*** Alocação / Sala
+*** Presença
+*** Bônus
+*** Relatório
 @endmindmap
+
+@startmindmap
+* Casos de uso descritivos\nSistema do Teste de Progresso
+** UC02 - Realizar inscrição
+*** Ator principal
+**** Aluno
+*** Pré-condições
+**** Aluno autenticado
+**** Edição com inscrições abertas
+**** Matrículas do semestre importadas
+*** Fluxo principal
+**** Selecionar edição disponível
+**** Consultar turmas elegíveis
+**** Escolher turma para receber o bônus
+**** Informar atendimento especial, se necessário
+**** Revisar e confirmar os dados
+**** Receber comprovante de inscrição
+*** Fluxos alternativos
+**** Período de inscrição encerrado
+**** Nenhuma turma elegível encontrada
+**** Inscrição já existente para a edição
+**** Atendimento especial sem consentimento específico
+*** Pós-condição
+**** Inscrição confirmada e vinculada à turma escolhida
+** UC08 - Gerar ensalamento e escala
+*** Ator principal
+**** Administração acadêmica
+*** Pré-condições
+**** Inscrições encerradas
+**** Salas, capacidades e acessibilidade cadastradas
+**** Professores e disponibilidades cadastrados
+*** Fluxo principal
+**** Agrupar inscritos por campus
+**** Priorizar atendimento especial
+**** Selecionar salas com capacidade suficiente
+**** Distribuir alunos de forma equilibrada
+**** Escalar aplicadores e reservas
+**** Calcular material por sala
+**** Validar e publicar a alocação
+*** Fluxos alternativos
+**** Capacidade insuficiente
+**** Sala acessível indisponível
+**** Quantidade de aplicadores insuficiente
+**** Ajuste manual com justificativa
+*** Pós-condição
+**** Inscritos alocados e logística publicada
+** UC11 - Processar notas e bônus
+*** Ator principal
+**** Administração acadêmica
+*** Atores de apoio
+**** Sistema acadêmico
+**** Professor
+*** Pré-condições
+**** Aplicação concluída
+**** Presenças registradas
+*** Fluxo principal
+**** Importar notas brutas
+**** Validar matrícula, faixa e presença
+**** Converter nota para bônus de zero a um
+**** Vincular bônus à turma escolhida
+**** Disponibilizar espelho ao professor
+**** Exportar notas e publicar resultados
+*** Fluxos alternativos
+**** Arquivo inválido
+**** Nota fora da faixa
+**** Aluno ausente com nota
+**** Turma sem professor responsável
+*** Pós-condição
+**** Bônus válidos publicados e alterações auditadas
+@endmindmap
+
+@startuml Diagrama_Casos_de_Uso_Teste_de_Progresso
+left to right direction
+skinparam monochrome true
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor "Usuário institucional" as Usuario
+actor Aluno
+actor Professor
+actor "Coordenação de curso" as Coordenacao
+actor "Administração acadêmica" as Administracao
+actor "Sistema acadêmico" as SistemaAcademico
+actor "Serviço de e-mail" as Email
+
+Aluno -|> Usuario
+Professor -|> Usuario
+Coordenacao -|> Usuario
+Administracao -|> Usuario
+
+rectangle "Sistema do Teste de Progresso" {
+  package "Acesso" {
+    usecase "UC01\nAutenticar usuário" as UC01
+  }
+
+  package "Inscrição e autoatendimento" {
+    usecase "UC02\nRealizar inscrição" as UC02
+    usecase "Consultar turmas\nelegíveis" as UC02a
+    usecase "Escolher turma de\ndestino do bônus" as UC02b
+    usecase "Emitir comprovante" as UC02c
+    usecase "Solicitar atendimento\nespecial" as UC02d
+    usecase "UC03\nAlterar ou cancelar\ninscrição" as UC03
+    usecase "UC04\nConsultar inscrição,\nlocal e resultado" as UC04
+    usecase "UC15\nConsultar e exportar\nos próprios dados" as UC15
+  }
+
+  package "Configuração e logística" {
+    usecase "UC05\nGerenciar edição" as UC05
+    usecase "UC06\nImportar dados\nacadêmicos" as UC06
+    usecase "UC07\nGerenciar campi, salas\ne disponibilidades" as UC07
+    usecase "UC08\nGerar ensalamento\ne escala" as UC08
+    usecase "Validar capacidade,\ncampus e acessibilidade" as UC08a
+    usecase "Escalar aplicadores\ne reservas" as UC08b
+    usecase "Calcular materiais\npor sala" as UC08c
+    usecase "Gerar documentos\nda aplicação" as UC08d
+    usecase "UC09\nAjustar alocação\ncom justificativa" as UC09
+  }
+
+  package "Aplicação, notas e gestão" {
+    usecase "UC10\nRegistrar presença" as UC10
+    usecase "UC11\nProcessar notas\ne bônus" as UC11
+    usecase "Importar e validar\nnotas brutas" as UC11a
+    usecase "Converter nota\npara bônus" as UC11b
+    usecase "Exportar notas" as UC11c
+    usecase "UC12\nConsultar espelho\nde notas" as UC12
+    usecase "UC13\nConsultar escala\nde aplicação" as UC13
+    usecase "UC14\nConsultar relatórios\ne indicadores" as UC14
+  }
+}
+
+Usuario --> UC01
+
+Aluno --> UC02
+Aluno --> UC03
+Aluno --> UC04
+Aluno --> UC15
+
+Professor --> UC12
+Professor --> UC13
+
+Coordenacao --> UC14
+
+Administracao --> UC05
+Administracao --> UC06
+Administracao --> UC07
+Administracao --> UC08
+Administracao --> UC09
+Administracao --> UC10
+Administracao --> UC11
+Administracao --> UC14
+
+SistemaAcademico --> UC06
+SistemaAcademico --> UC11c
+Email --> UC02c
+
+UC02 .> UC02a : <<include>>
+UC02 .> UC02b : <<include>>
+UC02 .> UC02c : <<include>>
+UC02d .> UC02 : <<extend>>
+
+UC08 .> UC08a : <<include>>
+UC08 .> UC08b : <<include>>
+UC08 .> UC08c : <<include>>
+UC08 .> UC08d : <<include>>
+UC09 .> UC08 : <<extend>>
+
+UC11 .> UC11a : <<include>>
+UC11 .> UC11b : <<include>>
+UC11 .> UC11c : <<include>>
+@enduml
+
+@startuml Diagrama_de_Classes_Conceitual_Teste_de_Progresso
+skinparam monochrome true
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+hide circle
+hide methods
+
+abstract class UsuarioInstitucional {
+  nome
+  credencial institucional
+  perfil de acesso
+}
+
+class Aluno {
+  campus acadêmico
+  curso
+}
+
+class Professor {
+  disciplinas sob responsabilidade
+  disponibilidade para aplicação
+}
+
+class CoordenacaoCurso {
+  curso acompanhado
+}
+
+class AdministracaoAcademica {
+}
+
+class Curso {
+  nome
+}
+
+class Disciplina {
+  nome
+  código
+}
+
+class Turma {
+  código da turma
+  semestre
+}
+
+class Matricula {
+  situação
+  semestre letivo
+}
+
+class Campus {
+  nome
+  endereço
+}
+
+class Edicao {
+  período de inscrição
+  período de aplicação
+  regra de conversão do bônus
+}
+
+class Inscricao {
+  data da solicitação
+  número de protocolo
+  status
+}
+
+class AtendimentoEspecial {
+  tipo de atendimento
+  consentimento específico
+}
+
+class ComprovanteInscricao {
+  número
+  data de emissão
+}
+
+class Sala {
+  capacidade de prova
+  acessível
+}
+
+class Alocacao {
+  identificação da carteira
+}
+
+class EscalaAplicacao {
+  função (titular/reserva)
+  horário
+}
+
+class Presenca {
+  situação (presente/ausente)
+}
+
+class Bonus {
+  valor de zero a um
+  status (bloqueado/válido)
+}
+
+class LoteDeNotas {
+  data de importação
+  status do processamento
+}
+
+class RegistroDeAuditoria {
+  ação realizada
+  autor
+  data
+  valor anterior
+  valor novo
+  justificativa
+}
+
+class Relatorio {
+  tipo
+  filtros aplicados
+  data de geração
+}
+
+UsuarioInstitucional <|-- Aluno
+UsuarioInstitucional <|-- Professor
+UsuarioInstitucional <|-- CoordenacaoCurso
+UsuarioInstitucional <|-- AdministracaoAcademica
+
+CoordenacaoCurso "1" --> "0..*" Curso : acompanha
+Curso "1" --> "0..*" Disciplina : agrupa
+Disciplina "1" --> "0..*" Turma : é ofertada em
+Professor "1" --> "0..*" Turma : é responsável por
+
+Aluno "1" --> "0..*" Matricula : possui
+Matricula "0..*" --> "1" Turma : refere-se a
+
+Campus "1" --> "0..*" Edicao : sedia
+Aluno "1" --> "0..*" Inscricao : realiza
+Inscricao "0..*" --> "1" Edicao : refere-se a
+Inscricao "1" --> "1" Turma : escolhe como destino do bônus
+Inscricao "1" --> "0..1" AtendimentoEspecial : pode solicitar
+Inscricao "1" --> "0..1" ComprovanteInscricao : gera
+Inscricao "1" --> "0..1" Alocacao : recebe
+
+Sala "1" --> "0..*" Alocacao : recebe
+Sala "0..*" --> "1" Campus : localizada em
+Sala "1" --> "0..*" EscalaAplicacao : é escalada em
+EscalaAplicacao "0..*" --> "1" Professor : escala
+
+Alocacao "1" --> "0..1" Presenca : registra
+Presenca "1" --> "0..1" Bonus : condiciona
+
+LoteDeNotas "1" --> "0..*" Bonus : processa
+LoteDeNotas "0..*" --> "1" Edicao : pertence a
+Bonus "0..*" --> "1" Turma : é direcionado a
+
+AdministracaoAcademica "1" --> "0..*" RegistroDeAuditoria : registra
+RegistroDeAuditoria "0..*" --> "0..1" Alocacao : referencia
+RegistroDeAuditoria "0..*" --> "0..1" Bonus : referencia
+
+AdministracaoAcademica "1" --> "0..*" Relatorio : gera
+CoordenacaoCurso "1" --> "0..*" Relatorio : consulta
+Relatorio "0..*" --> "1" Edicao : consolida
+
+note right of Inscricao
+  RN01: uma inscrição ativa por aluno e por edição.
+  RN02: a turma escolhida deve pertencer
+  a uma matrícula vigente do aluno.
+end note
+
+note right of Bonus
+  RN14: valor sempre entre 0 e 1.
+  RN15: aluno ausente não recebe bônus.
+end note
+@enduml
