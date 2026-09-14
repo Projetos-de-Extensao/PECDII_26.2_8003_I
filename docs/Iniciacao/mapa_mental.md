@@ -20,13 +20,50 @@ Foi levantado um ponto importante sobre o app e, assim, foi produzido o mapa men
 ## Versão 1.0
  
 ### Mapa mental 1
- 
-[![Mapa mental Entrevista](../assets/Mapas_Mentais/image.png)](../assets/Mapas_Mentais/image.png)
- 
+
+```plantuml
+@startmindmap
+* Sistema do Teste de Progresso
+** Atores
+*** Aluno
+*** Professor
+*** Coordenação de curso
+*** Administração acadêmica
+*** Sistema acadêmico (apoio)
+*** Serviço de e-mail (apoio)
+** Acesso
+*** UC01 Autenticar usuário
+** Inscrição e autoatendimento
+*** UC02 Realizar inscrição
+*** UC03 Alterar ou cancelar inscrição
+*** UC04 Consultar inscrição, local e resultado
+*** UC15 Consultar e exportar próprios dados
+** Configuração e logística
+*** UC05 Gerenciar edição
+*** UC06 Importar dados acadêmicos
+*** UC07 Gerenciar campi, salas e disponibilidades
+*** UC08 Gerar ensalamento e escala
+*** UC09 Ajustar alocação com justificativa
+** Aplicação, notas e gestão
+*** UC10 Registrar presença
+*** UC11 Processar notas e bônus
+*** UC12 Consultar espelho de notas
+*** UC13 Consultar escala de aplicação
+*** UC14 Consultar relatórios e indicadores
+** Principais entidades
+*** Edição
+*** Inscrição
+*** Turma / Matrícula
+*** Alocação / Sala
+*** Presença
+*** Bônus
+*** Relatório
+@endmindmap
+```
  
 ### Mapa mental 2
  
-[![Mapa mental Brainstorm](../assets/Mapas_Mentais/image.png)](../assets/Mapas_Mentais/image.png)
+
  
 ## Conclusão
  
