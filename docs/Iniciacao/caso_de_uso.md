@@ -106,7 +106,7 @@ Aluno, professor, coordenação e administração são especializações do ator
 - **RN06:** a turma escolhida determina a disciplina e o professor que receberão
   o espelho do bônus.
 
-**Rastreabilidade:** BS05 a BS09; RF-09 a RF-14; telas 02, 03 e 04 do protótipo.
+**Rastreabilidade:** BS05 a BS09; RF-09 a RF-14; telas 03 a 07 do protótipo.
 
 ### UC08 — Gerar ensalamento e escala
 
@@ -162,7 +162,7 @@ Aluno, professor, coordenação e administração são especializações do ator
   publicada.
 - **RN13:** ajustes manuais exigem justificativa e trilha de auditoria.
 
-**Rastreabilidade:** BS10 a BS23; RF-15 a RF-23; tela 08 do protótipo.
+**Rastreabilidade:** BS10 a BS23; RF-15 a RF-23; tela 14 do protótipo.
 
 ### UC11 — Processar notas e bônus
 
@@ -218,7 +218,7 @@ Aluno, professor, coordenação e administração são especializações do ator
   valor anterior.
 - **RN19:** somente registros válidos e confirmados podem ser exportados.
 
-**Rastreabilidade:** BS24 a BS30 e BS36; RF-24 a RF-28 e RF-33; telas 05 e 09 do protótipo.
+**Rastreabilidade:** BS24 a BS30 e BS36; RF-24 a RF-28 e RF-33; telas 10 e 16 do protótipo.
 
 ## Visão hierárquica dos casos descritivos
 
