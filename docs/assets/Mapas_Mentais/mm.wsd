@@ -1,4 +1,4 @@
-@startuml mindmap
+@startumlmindmap
 skinparam monochrome true
 skinparam ArrowColor #000000
 skinparam NodeFontSize 14
@@ -47,4 +47,4 @@ skinparam NodeFontSize 14
 **** Auditoria de alterações
 **** Proteção de dados (LGPD)
 **** Acesso restrito por perfil
-@enduml
+@endminimap
