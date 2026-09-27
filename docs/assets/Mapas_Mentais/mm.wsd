@@ -47,4 +47,4 @@ skinparam NodeFontSize 14
 **** Auditoria de alterações
 **** Proteção de dados (LGPD)
 **** Acesso restrito por perfil
-@enduml
+@endmindmap
