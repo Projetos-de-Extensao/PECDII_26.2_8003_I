@@ -1,5 +1,5 @@
 ---
-id: diagrama_de_cclasses
+id: diagrama_de_classes
 title: Diagrama de Classes
 ---
 
@@ -57,13 +57,52 @@ Para cada classe conceitual:
 
 | Classe Conceitual | Requisito(s) | Caso(s) de Uso | Tela/Protótipo |
 |---|---|---|---|
-| `<Classe>` | `RF-xx` | `UC-xx` | `Tela xx` |
+| Aluno | BS05, BS06 | UC02, UC03 | Tela 2 |
+| Inscricao | BS05, BS06 | UC02, UC03 | Tela 2 |
+| EdicaoTesteProgresso | BS03, BS04 | UC02 | Tela 2 |
+| Disciplina | BS06, BS27 | UC02 | Tela 2 |
+| Campus | BS10 | UC07 | Tela 4 |
+| Sala | BS11, BS12, BS13 | UC07, UC08 | Tela 4 |
+| Professor | BS17, BS18, BS19 | UC05, UC06 | Tela 3 |
+| Presenca | BS23 | UC05 | Tela 3 |
+| Nota | BS25, BS26, BS27 | UC06 | Tela 3 |
 
 #### 1.5 Critérios de validação
 
 - Cada classe deve ter vínculo com ao menos um requisito/caso de uso;
 - Não incluir classes técnicas (ex.: repositório, controller);
 - Terminologia alinhada ao domínio do problema.
+
+#### 1.6 Diagrama (v0.1 — entidades e relacionamentos)
+```plantuml
+@startuml
+skinparam monochrome true
+hide members
+
+class Aluno
+class Disciplina
+class EdicaoTesteProgresso
+class Inscricao
+class Campus
+class Sala
+class Professor
+class Presenca
+class Nota
+
+Aluno -- Inscricao
+Inscricao -- EdicaoTesteProgresso
+Inscricao -- Disciplina
+EdicaoTesteProgresso -- Campus
+Campus -- Sala
+Professor -- Sala
+Aluno -- Sala
+Aluno -- Presenca
+Presenca -- EdicaoTesteProgresso
+Aluno -- Nota
+Nota -- Disciplina
+Nota -- EdicaoTesteProgresso
+@enduml
+```
 
 ### 2) Transição para Diagrama de Classes de Especificação
 
@@ -86,7 +125,6 @@ Refinar o modelo conceitual para uma estrutura orientada à implementação.
 - **Responsabilidade**;
 - **Dependências e associações**;
 - **Restrições/invariantes** (quando houver).
-
 
 ### 3) Diagrama de Classes de Especificação
 
@@ -111,14 +149,13 @@ Refinar o modelo conceitual para uma estrutura orientada à implementação.
 - Nomes consistentes com o domínio;
 - Ausência de classes sem responsabilidade clara.
 
-
 ### 4) Estrutura de versionamento e revisão
 
-- **Versão**: `v0.1`, `v0.2`...
-- **Data**: `dd/mm/aaaa`
-- **Autor(es)**: `<nome>`
-- **Revisor(es)**: `<nome>`
-- **Resumo da alteração**: `<descrição curta>`
+- **Versão**: v0.1
+- **Data**: 27/09/2026
+- **Autor(es)**: Bernardo Mamede
+- **Revisor(es)**: [a definir com o grupo]
+- **Resumo da alteração**: Inserção do diagrama de classes conceitual inicial (entidades e relacionamentos) e rastreabilidade.
 
 ### 5) Entregáveis
 
