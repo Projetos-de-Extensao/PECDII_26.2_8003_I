@@ -4,8 +4,20 @@
     {
       "name": "mkdocs",
       "runtimeExecutable": ".venv-1/bin/mkdocs",
-      "runtimeArgs": ["serve", "-a", "127.0.0.1:8000"],
+      "runtimeArgs": ["serve", "-a", "127.0.0.1:8001"],
+      "port": 8001
+    },
+    {
+      "name": "api",
+      "runtimeExecutable": ".venv-1/bin/python",
+      "runtimeArgs": ["src/manage.py", "runserver", "127.0.0.1:8000"],
       "port": 8000
+    },
+    {
+      "name": "frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "frontend", "run", "dev", "--", "--host", "127.0.0.1"],
+      "port": 5173
     }
   ]
 }

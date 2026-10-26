@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1250" viewBox="0 0 1600 1250">
+<defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#eef4fb"/><stop offset="1" stop-color="#f5f7fb"/></linearGradient>
+<linearGradient id="azul" x2="1" y2="1"><stop stop-color="#1d4ed8"/><stop offset="1" stop-color="#1e3a8a"/></linearGradient>
+<filter id="sombra" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#1e3a5f" flood-opacity=".16"/></filter>
+<!-- moldura de navegador reutilizada nas 4 telas -->
+<g id="navegador">
+<rect width="720" height="470" rx="12" fill="#ffffff"/>
+<path d="M0 12a12 12 0 0 1 12-12h696a12 12 0 0 1 12 12v16H0z" fill="#e5e9f0"/>
+<circle cx="18" cy="14" r="5" fill="#f87171"/><circle cx="34" cy="14" r="5" fill="#fbbf24"/><circle cx="50" cy="14" r="5" fill="#34d399"/>
+<rect x="190" y="6" width="340" height="16" rx="8" fill="#ffffff"/>
+</g>
+<!-- menu lateral da coordenação -->
+<g id="lateral">
+<path d="M0 458v-430h150v442H12a12 12 0 0 1-12-12z" fill="#0f2a5c"/>
+<rect x="14" y="44" width="26" height="26" rx="7" fill="#3b82f6"/><text x="27" y="62" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">TP</text>
+<text x="48" y="55" font-size="11" font-weight="700" fill="#fff">Teste de</text><text x="48" y="68" font-size="11" font-weight="700" fill="#fff">Progresso</text>
+<text x="18" y="112" font-size="9" font-weight="700" letter-spacing="1" fill="#7f9ccf">COORDENAÇÃO</text>
+<text x="30" y="142" font-size="12" fill="#c7d4ee">Edições</text>
+<text x="30" y="172" font-size="12" fill="#c7d4ee">Inscrições</text>
+<text x="30" y="202" font-size="12" fill="#c7d4ee">Logística</text>
+<text x="30" y="232" font-size="12" fill="#c7d4ee">Notas</text>
+<text x="30" y="262" font-size="12" fill="#c7d4ee">Relatórios</text>
+<circle cx="30" cy="438" r="12" fill="#3b82f6"/><text x="30" y="442" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">PR</text>
+<text x="48" y="436" font-size="10" font-weight="700" fill="#fff">Paula Ribeiro</text><text x="48" y="449" font-size="9" fill="#7f9ccf">Coordenação</text>
+</g>
+</defs>
+
+<rect width="1600" height="1250" fill="url(#bg)"/>
+<text x="60" y="80" font-family="Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="4" fill="#4b6a9b">TESTE DE PROGRESSO • PRÉVIA DAS TELAS</text>
+<text x="60" y="138" font-family="Arial,sans-serif" font-size="44" font-weight="700" fill="#0f1f3d">Da inscrição à nota, em um só sistema.</text>
+<text x="60" y="178" font-family="Arial,sans-serif" font-size="20" fill="#64748b">Proposta visual do front-end React para alunos, professores e coordenação.</text>
+
+<g font-family="Arial,sans-serif">
+
+<!-- 1. LOGIN -->
+<g transform="translate(60 220)">
+<g filter="url(#sombra)"><use href="#navegador"/></g>
+<text x="360" y="18" font-size="10" fill="#64748b" text-anchor="middle">testeprogresso.universidade.edu.br/login</text>
+<path d="M0 28h300v442H12a12 12 0 0 1-12-12z" fill="url(#azul)"/>
+<rect x="36" y="70" width="44" height="44" rx="12" fill="#ffffff" fill-opacity=".18"/><text x="58" y="99" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">TP</text>
+<text x="36" y="168" font-size="26" font-weight="700" fill="#fff">Teste de</text><text x="36" y="200" font-size="26" font-weight="700" fill="#fff">Progresso</text>
+<text x="36" y="236" font-size="13" fill="#c7d7fb">Acompanhe sua evolução</text><text x="36" y="254" font-size="13" fill="#c7d7fb">ao longo do curso.</text>
+<rect x="36" y="400" width="112" height="24" rx="12" fill="#ffffff" fill-opacity=".15"/><text x="92" y="416" font-size="11" fill="#fff" text-anchor="middle">Edição 2026.2</text>
+<text x="380" y="118" font-size="24" font-weight="700" fill="#0f1f3d">Entrar</text>
+<text x="380" y="142" font-size="13" fill="#64748b">Use seu e-mail institucional.</text>
+<text x="380" y="182" font-size="10" font-weight="700" letter-spacing="1" fill="#475569">E-MAIL</text>
+<rect x="380" y="190" width="270" height="38" rx="9" fill="#f8fafc" stroke="#cbd5e1"/><text x="394" y="214" font-size="13" fill="#0f1f3d">mariana.costa@aluno.edu.br</text>
+<text x="380" y="256" font-size="10" font-weight="700" letter-spacing="1" fill="#475569">SENHA</text>
+<rect x="380" y="264" width="270" height="38" rx="9" fill="#f8fafc" stroke="#cbd5e1"/><text x="394" y="288" font-size="13" fill="#0f1f3d">••••••••••</text>
+<text x="650" y="322" font-size="11" fill="#1d4ed8" text-anchor="end">Esqueci minha senha</text>
+<rect x="380" y="338" width="270" height="42" rx="10" fill="#1d4ed8"/><text x="515" y="364" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">Entrar</text>
+<text x="515" y="410" font-size="11" fill="#94a3b8" text-anchor="middle">Acesso para alunos, professores e coordenação</text>
+</g>
+
+<!-- 2. PAINEL DO ALUNO -->
+<g transform="translate(820 220)">
+<g filter="url(#sombra)"><use href="#navegador"/></g>
+<text x="360" y="18" font-size="10" fill="#64748b" text-anchor="middle">testeprogresso.universidade.edu.br/aluno</text>
+<rect y="28" width="720" height="50" fill="#ffffff"/><line x1="0" y1="78" x2="720" y2="78" stroke="#e2e8f0"/>
+<rect x="24" y="40" width="26" height="26" rx="7" fill="#1d4ed8"/><text x="37" y="58" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">TP</text>
+<text x="60" y="58" font-size="14" font-weight="700" fill="#0f1f3d">Teste de Progresso</text>
+<text x="250" y="58" font-size="12" font-weight="700" fill="#1d4ed8">Início</text><text x="304" y="58" font-size="12" fill="#64748b">Minhas notas</text><text x="396" y="58" font-size="12" fill="#64748b">Atendimento especial</text>
+<circle cx="600" cy="53" r="13" fill="#dbeafe"/><text x="600" y="57" font-size="10" font-weight="700" fill="#1d4ed8" text-anchor="middle">MC</text>
+<text x="620" y="51" font-size="11" font-weight="700" fill="#0f1f3d">Mariana Costa</text><text x="620" y="64" font-size="10" fill="#64748b">Medicina • 5º período</text>
+<rect y="78" width="720" height="392" fill="#f5f7fb"/><path d="M0 458V78h720v380a12 12 0 0 1-12 12H12a12 12 0 0 1-12-12z" fill="#f5f7fb"/>
+<text x="24" y="110" font-size="18" font-weight="700" fill="#0f1f3d">Olá, Mariana</text>
+<text x="24" y="128" font-size="12" fill="#64748b">Sua próxima prova já está agendada.</text>
+<rect x="24" y="142" width="672" height="132" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="24" y="142" width="6" height="132" rx="3" fill="#1d4ed8"/>
+<text x="46" y="170" font-size="10" font-weight="700" letter-spacing="1" fill="#1d4ed8">EDIÇÃO 2026.2</text>
+<text x="46" y="196" font-size="18" font-weight="700" fill="#0f1f3d">Domingo, 23 de novembro • 08:00</text>
+<rect x="520" y="156" width="156" height="26" rx="13" fill="#dcfce7"/><circle cx="538" cy="169" r="4" fill="#16a34a"/><text x="606" y="173" font-size="11" font-weight="700" fill="#15803d" text-anchor="middle">Inscrição confirmada</text>
+<text x="46" y="226" font-size="10" fill="#64748b">CAMPUS</text><text x="46" y="243" font-size="13" font-weight="700" fill="#0f1f3d">Campus Centro</text>
+<text x="190" y="226" font-size="10" fill="#64748b">LOCAL</text><text x="190" y="243" font-size="13" font-weight="700" fill="#0f1f3d">Bloco B • Sala 204</text>
+<text x="350" y="226" font-size="10" fill="#64748b">CARTEIRA</text><text x="350" y="243" font-size="13" font-weight="700" fill="#0f1f3d">17</text>
+<rect x="520" y="222" width="156" height="34" rx="9" fill="#1d4ed8"/><text x="598" y="243" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">Baixar comprovante</text>
+<text x="24" y="306" font-size="14" font-weight="700" fill="#0f1f3d">Histórico de notas</text>
+<rect x="24" y="316" width="672" height="138" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+<g font-size="10" font-weight="700" fill="#64748b" letter-spacing=".5"><text x="44" y="338">EDIÇÃO</text><text x="180" y="338">ACERTOS</text><text x="320" y="338">NOTA</text><text x="440" y="338">BÔNUS NA DISCIPLINA</text><text x="676" y="338" text-anchor="end">SITUAÇÃO</text></g>
+<line x1="24" y1="347" x2="696" y2="347" stroke="#e2e8f0"/>
+<g font-size="12" fill="#0f1f3d">
+<text x="44" y="372">2026.1</text><text x="180" y="372">86 / 120</text><text x="320" y="372" font-weight="700">7,2</text><text x="440" y="372" font-weight="700" fill="#15803d">+0,8 ponto</text><text x="676" y="372" text-anchor="end" fill="#64748b">Publicada</text>
+<line x1="34" y1="384" x2="686" y2="384" stroke="#f1f5f9"/>
+<text x="44" y="406">2025.2</text><text x="180" y="406">74 / 120</text><text x="320" y="406" font-weight="700">6,2</text><text x="440" y="406" font-weight="700" fill="#15803d">+0,5 ponto</text><text x="676" y="406" text-anchor="end" fill="#64748b">Publicada</text>
+<line x1="34" y1="418" x2="686" y2="418" stroke="#f1f5f9"/>
+<text x="44" y="440">2025.1</text><text x="180" y="440">63 / 120</text><text x="320" y="440" font-weight="700">5,3</text><text x="440" y="440" font-weight="700" fill="#15803d">+0,3 ponto</text><text x="676" y="440" text-anchor="end" fill="#64748b">Publicada</text>
+</g>
+</g>
+
+<!-- 3. PAINEL DA COORDENAÇÃO -->
+<g transform="translate(60 730)">
+<g filter="url(#sombra)"><use href="#navegador"/></g>
+<text x="360" y="18" font-size="10" fill="#64748b" text-anchor="middle">testeprogresso.universidade.edu.br/coordenacao</text>
+<path d="M150 28h570v430a12 12 0 0 1-12 12H150z" fill="#f5f7fb"/>
+<use href="#lateral"/>
+<rect x="10" y="125" width="130" height="26" rx="7" fill="#1d4ed8"/><text x="30" y="142" font-size="12" font-weight="700" fill="#fff">Edições</text>
+<text x="174" y="66" font-size="18" font-weight="700" fill="#0f1f3d">Edição 2026.2</text>
+<text x="174" y="84" font-size="12" fill="#64748b">Prova em 23/11/2026 • inscrições encerram em 07/11</text>
+<rect x="604" y="50" width="94" height="30" rx="8" fill="#ffffff" stroke="#cbd5e1"/><text x="651" y="69" font-size="11" font-weight="700" fill="#0f1f3d" text-anchor="middle">Gerar PDFs</text>
+<g>
+<rect x="174" y="102" width="166" height="82" rx="12" fill="#ffffff" stroke="#e2e8f0"/><text x="190" y="126" font-size="11" fill="#64748b">Inscritos</text><text x="190" y="158" font-size="26" font-weight="700" fill="#0f1f3d">1.248</text><text x="190" y="174" font-size="10" fill="#15803d">+86 nesta semana</text>
+<rect x="353" y="102" width="166" height="82" rx="12" fill="#ffffff" stroke="#e2e8f0"/><text x="369" y="126" font-size="11" fill="#64748b">Salas alocadas</text><text x="369" y="158" font-size="26" font-weight="700" fill="#0f1f3d">42<tspan font-size="15" fill="#64748b"> / 45</tspan></text><rect x="369" y="168" width="134" height="6" rx="3" fill="#e2e8f0"/><rect x="369" y="168" width="125" height="6" rx="3" fill="#1d4ed8"/>
+<rect x="532" y="102" width="166" height="82" rx="12" fill="#ffffff" stroke="#e2e8f0"/><text x="548" y="126" font-size="11" fill="#64748b">Presença (2026.1)</text><text x="548" y="158" font-size="26" font-weight="700" fill="#0f1f3d">91%</text><text x="548" y="174" font-size="10" fill="#64748b">1.102 de 1.211 inscritos</text>
+</g>
+<rect x="174" y="198" width="524" height="252" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+<text x="192" y="224" font-size="13" font-weight="700" fill="#0f1f3d">Inscritos por curso</text>
+<g font-size="10" fill="#94a3b8"><text x="208" y="252" text-anchor="end">300</text><text x="208" y="302" text-anchor="end">200</text><text x="208" y="352" text-anchor="end">100</text><text x="208" y="402" text-anchor="end">0</text></g>
+<g stroke="#f1f5f9"><line x1="216" y1="249" x2="682" y2="249"/><line x1="216" y1="299" x2="682" y2="299"/><line x1="216" y1="349" x2="682" y2="349"/></g>
+<line x1="216" y1="399" x2="682" y2="399" stroke="#cbd5e1"/>
+<!-- escala: 100 inscritos = 50 px -->
+<g fill="#1d4ed8">
+<rect x="236" y="243" width="56" height="156" rx="5"/><rect x="330" y="265" width="56" height="134" rx="5"/><rect x="424" y="277" width="56" height="122" rx="5"/><rect x="518" y="287" width="56" height="112" rx="5"/><rect x="612" y="300" width="56" height="99" rx="5" fill="#60a5fa"/>
+</g>
+<g font-size="10" font-weight="700" fill="#0f1f3d" text-anchor="middle"><text x="264" y="237">312</text><text x="358" y="259">268</text><text x="452" y="271">245</text><text x="546" y="281">225</text><text x="640" y="294">198</text></g>
+<g font-size="10" fill="#64748b" text-anchor="middle"><text x="264" y="418">Medicina</text><text x="358" y="418">Direito</text><text x="452" y="418">Engenharia</text><text x="546" y="418">Psicologia</text><text x="640" y="418">Enfermagem</text></g>
+</g>
+
+<!-- 4. LANÇAMENTO DE NOTAS -->
+<g transform="translate(820 730)">
+<g filter="url(#sombra)"><use href="#navegador"/></g>
+<text x="360" y="18" font-size="10" fill="#64748b" text-anchor="middle">testeprogresso.universidade.edu.br/notas</text>
+<path d="M150 28h570v430a12 12 0 0 1-12 12H150z" fill="#f5f7fb"/>
+<use href="#lateral"/>
+<rect x="10" y="215" width="130" height="26" rx="7" fill="#1d4ed8"/><text x="30" y="232" font-size="12" font-weight="700" fill="#fff">Notas</text>
+<text x="174" y="66" font-size="18" font-weight="700" fill="#0f1f3d">Lançamento de notas</text>
+<text x="174" y="84" font-size="12" fill="#64748b">Edição 2026.1 • Medicina • 312 alunos</text>
+<rect x="500" y="50" width="98" height="30" rx="8" fill="#ffffff" stroke="#1d4ed8"/><text x="549" y="69" font-size="11" font-weight="700" fill="#1d4ed8" text-anchor="middle">Importar CSV</text>
+<rect x="606" y="50" width="92" height="30" rx="8" fill="#1d4ed8"/><text x="652" y="69" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Exportar</text>
+<rect x="174" y="98" width="524" height="30" rx="8" fill="#eff6ff"/><text x="188" y="117" font-size="11" fill="#1e3a8a">Regra de bônus: nota ≥ 5,0 → +0,3 • ≥ 6,0 → +0,5 • ≥ 7,0 → +0,8 ponto na disciplina</text>
+<rect x="174" y="140" width="524" height="312" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+<g font-size="10" font-weight="700" fill="#64748b" letter-spacing=".5"><text x="190" y="164">MATRÍCULA</text><text x="282" y="164">ALUNO</text><text x="436" y="164">PRESENÇA</text><text x="530" y="164">NOTA</text><text x="682" y="164" text-anchor="end">BÔNUS</text></g>
+<line x1="174" y1="174" x2="698" y2="174" stroke="#e2e8f0"/>
+<g font-size="12" fill="#0f1f3d">
+<text x="190" y="200" fill="#64748b">2022104518</text><text x="282" y="200">Ana Beatriz Lopes</text><rect x="436" y="187" width="62" height="20" rx="10" fill="#dcfce7"/><text x="467" y="201" font-size="10" font-weight="700" fill="#15803d" text-anchor="middle">Presente</text><rect x="526" y="186" width="48" height="22" rx="6" fill="#f8fafc" stroke="#cbd5e1"/><text x="550" y="201" text-anchor="middle">7,8</text><text x="682" y="200" text-anchor="end" font-weight="700" fill="#15803d">+0,8</text>
+<line x1="184" y1="216" x2="688" y2="216" stroke="#f1f5f9"/>
+<text x="190" y="242" fill="#64748b">2022104533</text><text x="282" y="242">Bruno Henrique Dias</text><rect x="436" y="229" width="62" height="20" rx="10" fill="#dcfce7"/><text x="467" y="243" font-size="10" font-weight="700" fill="#15803d" text-anchor="middle">Presente</text><rect x="526" y="228" width="48" height="22" rx="6" fill="#f8fafc" stroke="#cbd5e1"/><text x="550" y="243" text-anchor="middle">6,4</text><text x="682" y="242" text-anchor="end" font-weight="700" fill="#15803d">+0,5</text>
+<line x1="184" y1="258" x2="688" y2="258" stroke="#f1f5f9"/>
+<text x="190" y="284" fill="#64748b">2022104547</text><text x="282" y="284">Camila Ferreira</text><rect x="436" y="271" width="62" height="20" rx="10" fill="#fee2e2"/><text x="467" y="285" font-size="10" font-weight="700" fill="#b91c1c" text-anchor="middle">Ausente</text><rect x="526" y="270" width="48" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0"/><text x="550" y="285" text-anchor="middle" fill="#94a3b8">—</text><text x="682" y="284" text-anchor="end" fill="#94a3b8">—</text>
+<line x1="184" y1="300" x2="688" y2="300" stroke="#f1f5f9"/>
+<text x="190" y="326" fill="#64748b">2022104552</text><text x="282" y="326">Diego Martins</text><rect x="436" y="313" width="62" height="20" rx="10" fill="#dcfce7"/><text x="467" y="327" font-size="10" font-weight="700" fill="#15803d" text-anchor="middle">Presente</text><rect x="526" y="312" width="48" height="22" rx="6" fill="#f8fafc" stroke="#cbd5e1"/><text x="550" y="327" text-anchor="middle">5,2</text><text x="682" y="326" text-anchor="end" font-weight="700" fill="#15803d">+0,3</text>
+<line x1="184" y1="342" x2="688" y2="342" stroke="#f1f5f9"/>
+<text x="190" y="368" fill="#64748b">2022104566</text><text x="282" y="368">Eduarda Nogueira</text><rect x="436" y="355" width="62" height="20" rx="10" fill="#dcfce7"/><text x="467" y="369" font-size="10" font-weight="700" fill="#15803d" text-anchor="middle">Presente</text><rect x="526" y="354" width="48" height="22" rx="6" fill="#f8fafc" stroke="#cbd5e1"/><text x="550" y="369" text-anchor="middle">4,6</text><text x="682" y="368" text-anchor="end" fill="#94a3b8">0,0</text>
+</g>
+<line x1="174" y1="388" x2="698" y2="388" stroke="#e2e8f0"/>
+<text x="190" y="424" font-size="11" fill="#64748b">Mostrando 5 de 312 alunos</text>
+<rect x="560" y="408" width="124" height="28" rx="8" fill="#16a34a"/><text x="622" y="426" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Publicar notas</text>
+</g>
+
+</g>
+</svg>

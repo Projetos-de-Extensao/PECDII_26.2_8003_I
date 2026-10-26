@@ -31,17 +31,19 @@ class Produto(models.Model):
 ```
 
 !!! warning "Dependências e migrações"
-    A pasta `src/app/migrations/` não existe. Antes de subir o servidor, instale as dependências e gere as migrações:
+    O banco `src/db.sqlite3` não é versionado. Antes de subir o servidor, instale as dependências e crie o banco:
 
     ```bash
     pip install -r requirements.txt
     cd src
-    python manage.py makemigrations app
     python manage.py migrate
     python manage.py runserver
     ```
 
 A API fica disponível em `http://127.0.0.1:8000/`. Como `project/urls.py` inclui `app.urls` duas vezes, os mesmos endpoints respondem com e sem o prefixo `/api/`. Neste guia usamos o prefixo `/api/`.
+
+!!! note "Endpoints do sistema"
+    Os endpoints do Teste de Progresso ficam em `/api/v1/` e exigem login por token (`POST /api/v1/auth/token/`). A documentação interativa está em `http://127.0.0.1:8000/api/v1/docs/`. O `Produto` deste guia permanece aberto, sem login, por ser apenas um exemplo didático.
 
 ### Endpoints gerados pelo router
 
