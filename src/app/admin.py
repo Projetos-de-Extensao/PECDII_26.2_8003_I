@@ -2,7 +2,12 @@ from django.contrib import admin
 
 from .models import Aluno, Inscricao, Produto
 
-admin.site.register(Produto)
+
+@admin.register(Produto)
+class ProdutoAdmin(admin.ModelAdmin):
+    list_display = ("nome", "preco", "disponivel")
+    search_fields = ("nome",)
+    list_filter = ("disponivel",)
 
 
 @admin.register(Aluno)
@@ -18,3 +23,4 @@ class InscricaoAdmin(admin.ModelAdmin):
     search_fields = ("aluno__matricula", "aluno__nome", "turma_codigo")
     list_filter = ("edicao", "status")
     autocomplete_fields = ("aluno",)
+    list_select_related = ("aluno",)
