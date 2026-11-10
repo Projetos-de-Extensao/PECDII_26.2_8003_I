@@ -36,8 +36,7 @@ Foi levantado um ponto importante sobre o app e, assim, foi produzido o mapa men
 ** Inscrição e autoatendimento
 *** UC02 Realizar inscrição
 *** UC03 Alterar ou cancelar inscrição
-*** UC04 Consultar inscrição, local e resultado
-*** UC15 Consultar e exportar próprios dados
+*** UC04 Consultar inscrição, local e resultado 
 ** Configuração e logística
 *** UC05 Gerenciar edição
 *** UC06 Importar dados acadêmicos
