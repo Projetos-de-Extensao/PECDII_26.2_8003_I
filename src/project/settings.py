@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'drf_spectacular'
+    'drf_spectacular',
     'rest_framework',
     'app',
 ]
@@ -130,4 +130,11 @@ MAILERS = {
 }
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'API do Sistema do Teste de Progresso',
+    'DESCRIPTION': 'Cadastro de alunos e inscrições do Teste de Progresso.',
+    'VERSION': '0.1.0',
 }
