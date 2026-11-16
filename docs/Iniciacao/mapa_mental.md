@@ -28,7 +28,7 @@ Foi levantado um ponto importante sobre o app e, assim, foi produzido o mapa men
 *** Aluno
 *** Professor
 *** Coordenação de curso
-*** Administração acadêmica
+*** Secretaria acadêmica
 *** Sistema acadêmico (apoio)
 *** Serviço de e-mail (apoio)
 ** Acesso

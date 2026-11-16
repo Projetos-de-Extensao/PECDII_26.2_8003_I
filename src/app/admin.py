@@ -1,13 +1,6 @@
 from django.contrib import admin
 
-from .models import Aluno, Inscricao, Produto
-
-
-@admin.register(Produto)
-class ProdutoAdmin(admin.ModelAdmin):
-    list_display = ("nome", "preco", "disponivel")
-    search_fields = ("nome",)
-    list_filter = ("disponivel",)
+from .models import Aluno, Inscricao
 
 
 @admin.register(Aluno)

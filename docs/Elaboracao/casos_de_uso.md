@@ -20,11 +20,11 @@ lançamento do bônus.
 | **Aluno** | Inscrever-se, escolher a turma que receberá o bônus, consultar local, resultado e os próprios dados. |
 | **Professor** | Consultar sua escala de aplicação e o espelho de alunos e bônus das disciplinas sob sua responsabilidade. |
 | **Coordenação de curso** | Consultar indicadores de adesão e desempenho do próprio curso. |
-| **Administração acadêmica** | Configurar edições, importar dados, organizar a aplicação, processar notas e emitir relatórios. |
+| **Secretaria acadêmica** | Configurar edições, importar dados, organizar a aplicação, processar notas e emitir relatórios. |
 | **Sistema acadêmico** | Fornecer dados de alunos, turmas e matrículas e receber a exportação das notas. |
 | **Serviço de e-mail** | Enviar confirmações de inscrição e comunicações sobre o local de prova. |
 
-Aluno, professor, coordenação e administração são especializações do ator
+Aluno, professor, coordenação e secretaria são especializações do ator
 **Usuário institucional** e acessam o sistema por credencial institucional.
 
 ## Catálogo de casos de uso
@@ -35,16 +35,16 @@ Aluno, professor, coordenação e administração são especializações do ator
 | UC02 | Realizar inscrição | Aluno | Inscrição confirmada e vinculada a uma turma elegível. |
 | UC03 | Alterar ou cancelar inscrição | Aluno | Inscrição atualizada ou cancelada dentro do prazo. |
 | UC04 | Consultar inscrição, local e resultado | Aluno | Dados da participação exibidos conforme a etapa da edição. |
-| UC05 | Gerenciar edição | Administração acadêmica | Edição, período, campi, cursos e regra do bônus configurados. |
-| UC06 | Importar dados acadêmicos | Administração acadêmica | Alunos, turmas, matrículas e professores validados e disponíveis. |
-| UC07 | Gerenciar campi, salas e disponibilidades | Administração acadêmica | Recursos físicos e humanos preparados para o ensalamento. |
-| UC08 | Gerar ensalamento e escala | Administração acadêmica | Alunos, salas, aplicadores e materiais distribuídos. |
-| UC09 | Ajustar alocação com justificativa | Administração acadêmica | Exceção logística registrada na trilha de auditoria. |
-| UC10 | Registrar presença | Administração acadêmica | Presença ou ausência registrada para cada inscrito. |
-| UC11 | Processar notas e bônus | Administração acadêmica | Bônus válidos vinculados às turmas e prontos para exportação. |
+| UC05 | Gerenciar edição | Secretaria acadêmica | Edição, período, campi, cursos e regra do bônus configurados. |
+| UC06 | Importar dados acadêmicos | Secretaria acadêmica | Alunos, turmas, matrículas e professores validados e disponíveis. |
+| UC07 | Gerenciar campi, salas e disponibilidades | Secretaria acadêmica | Recursos físicos e humanos preparados para o ensalamento. |
+| UC08 | Gerar ensalamento e escala | Secretaria acadêmica | Alunos, salas, aplicadores e materiais distribuídos. |
+| UC09 | Ajustar alocação com justificativa | Secretaria acadêmica | Exceção logística registrada na trilha de auditoria. |
+| UC10 | Registrar presença | Secretaria acadêmica | Presença ou ausência registrada para cada inscrito. |
+| UC11 | Processar notas e bônus | Secretaria acadêmica | Bônus válidos vinculados às turmas e prontos para exportação. |
 | UC12 | Consultar espelho de notas | Professor | Relação de alunos e bônus da disciplina exibida. |
 | UC13 | Consultar escala de aplicação | Professor | Local, horário, função e documentos da aplicação exibidos. |
-| UC14 | Consultar relatórios e indicadores | Coordenação e administração | Dados consolidados de adesão, ocupação e desempenho exibidos. |
+| UC14 | Consultar relatórios e indicadores | Coordenação e secretaria | Dados consolidados de adesão, ocupação e desempenho exibidos. |
 | UC15 | Consultar e exportar os próprios dados | Aluno | Histórico pessoal apresentado e exportado em CSV ou PDF. |
 
 ## Casos de uso descritivos
@@ -113,15 +113,15 @@ Aluno, professor, coordenação e administração são especializações do ator
 | Campo | Descrição |
 |---|---|
 | **Objetivo** | Distribuir os inscritos entre salas e preparar aplicadores, materiais e documentos da aplicação. |
-| **Ator principal** | Administração acadêmica. |
-| **Gatilho** | A administração seleciona **Gerar ensalamento** em uma edição. |
+| **Ator principal** | Secretaria acadêmica. |
+| **Gatilho** | A secretaria seleciona **Gerar ensalamento** em uma edição. |
 | **Pré-condições** | Inscrições encerradas; campi e salas cadastrados; capacidade de prova e acessibilidade informadas; professores e disponibilidades cadastrados. |
 | **Pós-condição de sucesso** | Todos os inscritos ficam alocados; cada sala ocupada possui aplicador; materiais e documentos são calculados; local fica disponível para publicação. |
 | **Pós-condição mínima** | Uma proposta inválida não pode ser publicada. |
 
 #### Fluxo principal
 
-1. A administração seleciona a edição e os campi que serão processados.
+1. A secretaria seleciona a edição e os campi que serão processados.
 2. O sistema agrupa as inscrições confirmadas por campus.
 3. O sistema separa as inscrições com atendimento especial deferido.
 4. O sistema verifica se há capacidade de prova suficiente em cada campus e
@@ -135,19 +135,19 @@ Aluno, professor, coordenação e administração são especializações do ator
 8. O sistema calcula cadernos, cartões-resposta, listas e envelopes por sala,
    acrescidos da margem de reserva.
 9. O sistema valida as restrições rígidas e apresenta o resumo da proposta.
-10. A administração revisa a ocupação, a escala e os alertas.
+10. A secretaria revisa a ocupação, a escala e os alertas.
 11. O sistema gera mapa de sala, lista de presença e identificação de porta.
-12. A administração aprova e publica o local da prova para os alunos.
+12. A secretaria aprova e publica o local da prova para os alunos.
 
 #### Fluxos alternativos e de exceção
 
 | ID | Condição | Resposta do sistema |
 |---|---|---|
 | A1 | A capacidade do campus é insuficiente. | Bloqueia a publicação, informa quantas vagas faltam e sugere cadastrar ou liberar outra sala. |
-| A2 | Não há sala acessível suficiente. | Bloqueia a alocação dos alunos afetados e solicita intervenção administrativa. |
+| A2 | Não há sala acessível suficiente. | Bloqueia a alocação dos alunos afetados e solicita intervenção da secretaria. |
 | A3 | Faltam professores aplicadores. | Identifica as salas sem aplicador e impede a publicação da escala. |
 | A4 | Um professor aparece em duas salas no mesmo horário. | Marca o conflito e exige substituição. |
-| A5 | A administração deseja realocar um aluno ou professor. | Executa o UC09, exigindo justificativa e registrando autor, data, valor anterior e novo valor. |
+| A5 | A secretaria deseja realocar um aluno ou professor. | Executa o UC09, exigindo justificativa e registrando autor, data, valor anterior e novo valor. |
 | A6 | Uma alteração manual viola capacidade, campus ou acessibilidade. | Rejeita a alteração e apresenta a regra violada. |
 
 #### Regras de negócio
@@ -169,16 +169,16 @@ Aluno, professor, coordenação e administração são especializações do ator
 | Campo | Descrição |
 |---|---|
 | **Objetivo** | Importar o resultado do teste, converter a nota para bônus e direcioná-lo à turma escolhida pelo aluno. |
-| **Ator principal** | Administração acadêmica. |
+| **Ator principal** | Secretaria acadêmica. |
 | **Atores de apoio** | Sistema acadêmico e professor. |
-| **Gatilho** | A administração seleciona **Importar notas** após a aplicação. |
+| **Gatilho** | A secretaria seleciona **Importar notas** após a aplicação. |
 | **Pré-condições** | Aplicação concluída; presenças registradas; inscrições vinculadas às turmas; regra de conversão configurada. |
 | **Pós-condição de sucesso** | Bônus válidos calculados, espelhos disponibilizados, arquivo de exportação gerado e resultados publicados. |
 | **Pós-condição mínima** | Registros inconsistentes permanecem bloqueados e não são exportados. |
 
 #### Fluxo principal
 
-1. A administração seleciona a edição e envia o arquivo de notas brutas.
+1. A secretaria seleciona a edição e envia o arquivo de notas brutas.
 2. O sistema valida formato, colunas obrigatórias, matrícula e duplicidade.
 3. O sistema relaciona cada linha à inscrição e ao registro de presença.
 4. O sistema valida a faixa da nota bruta.
@@ -188,11 +188,11 @@ Aluno, professor, coordenação e administração são especializações do ator
 7. O sistema vincula cada bônus à turma escolhida na inscrição e identifica seu
    professor responsável.
 8. O sistema apresenta totais processados, bloqueios e inconsistências.
-9. A administração corrige ou exclui os registros inválidos e confirma o lote.
+9. A secretaria corrige ou exclui os registros inválidos e confirma o lote.
 10. O sistema disponibiliza o espelho para cada professor, contendo somente as
     turmas sob sua responsabilidade.
 11. O sistema gera o arquivo de exportação para o sistema acadêmico.
-12. A administração publica os resultados para os alunos.
+12. A secretaria publica os resultados para os alunos.
 13. O sistema registra na auditoria a importação, as correções e a publicação.
 
 #### Fluxos alternativos e de exceção
@@ -251,7 +251,7 @@ arquivo `mp.puml`.
 **** Inscrição confirmada e vinculada à turma escolhida
 ** UC08 - Gerar ensalamento e escala
 *** Ator principal
-**** Administração acadêmica
+**** Secretaria acadêmica
 *** Pré-condições
 **** Inscrições encerradas
 **** Salas, capacidades e acessibilidade cadastradas
@@ -273,7 +273,7 @@ arquivo `mp.puml`.
 **** Inscritos alocados e logística publicada
 ** UC11 - Processar notas e bônus
 *** Ator principal
-**** Administração acadêmica
+**** Secretaria acadêmica
 *** Atores de apoio
 **** Sistema acadêmico
 **** Professor
@@ -311,14 +311,14 @@ actor "Usuário institucional" as Usuario
 actor Aluno
 actor Professor
 actor "Coordenação de curso" as Coordenacao
-actor "Administração acadêmica" as Administracao
+actor "Secretaria acadêmica" as Secretaria
 actor "Sistema acadêmico" as SistemaAcademico
 actor "Serviço de e-mail" as Email
 
 Aluno -|> Usuario
 Professor -|> Usuario
 Coordenacao -|> Usuario
-Administracao -|> Usuario
+Secretaria -|> Usuario
 
 rectangle "Sistema do Teste de Progresso" {
   package "Acesso" {
@@ -372,14 +372,14 @@ Professor --> UC13
 
 Coordenacao --> UC14
 
-Administracao --> UC05
-Administracao --> UC06
-Administracao --> UC07
-Administracao --> UC08
-Administracao --> UC09
-Administracao --> UC10
-Administracao --> UC11
-Administracao --> UC14
+Secretaria --> UC05
+Secretaria --> UC06
+Secretaria --> UC07
+Secretaria --> UC08
+Secretaria --> UC09
+Secretaria --> UC10
+Secretaria --> UC11
+Secretaria --> UC14
 
 SistemaAcademico --> UC06
 SistemaAcademico --> UC11c

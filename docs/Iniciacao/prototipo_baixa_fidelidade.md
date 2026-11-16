@@ -42,7 +42,7 @@ package "Professor" {
   rectangle "10 Espelho de notas" as T10
 }
 
-package "Administração acadêmica" {
+package "Secretaria acadêmica" {
   rectangle "11 Gerenciar edição" as T11
   rectangle "12 Importar dados" as T12
   rectangle "13 Campi, salas e professores" as T13
@@ -51,11 +51,11 @@ package "Administração acadêmica" {
   rectangle "16 Processar notas" as T16
 }
 
-rectangle "17 Relatórios\n(Coordenação e Administração)" as T17
+rectangle "17 Relatórios\n(Coordenação e Secretaria)" as T17
 
 T01 --> T02 : aluno
 T01 --> T09 : professor
-T01 --> T11 : administração
+T01 --> T11 : secretaria
 T01 --> T17 : coordenação
 
 T02 --> T03
@@ -100,7 +100,7 @@ T16 --> T17
 @endsalt
 ```
 
-- **UC01 · RF-01, RF-02.** Após autenticar, o usuário é direcionado ao painel do seu perfil (aluno, professor, coordenação ou administração).
+- **UC01 · RF-01, RF-02.** Após autenticar, o usuário é direcionado ao painel do seu perfil (aluno, professor, coordenação ou secretaria).
 - Não há "esqueci minha senha": a credencial é da instituição, então a recuperação é feita pelo suporte de TI.
 - O aviso de privacidade e o contato do encarregado ficam visíveis desde o login (LGPD, art. 41).
 
@@ -186,7 +186,7 @@ T16 --> T17
   {+
     <b>Consentimento específico (dado sensível)
     Esta informação será usada somente para organizar sua sala de prova.
-    O acesso é restrito à administração acadêmica, e o dado é excluído ao fim da edição.
+    O acesso é restrito à secretaria acadêmica, e o dado é excluído ao fim da edição.
     Você pode revogar este consentimento a qualquer momento.
     [X] Autorizo o tratamento desta informação para esta finalidade
   }
@@ -302,11 +302,11 @@ T16 --> T17
   <b>O que o sistema guarda sobre você
   {#
     Dado | Finalidade | Compartilhado com
-    Nome, matrícula, e-mail | Identificação e comunicação | Administração
-    Curso, período, campus | Alocação de sala | Administração, coordenação
+    Nome, matrícula, e-mail | Identificação e comunicação | Secretaria
+    Curso, período, campus | Alocação de sala | Secretaria, coordenação
     Turma escolhida | Lançamento do bônus | Professor(a) da turma
     Presença e bônus | Registro acadêmico | Professor(a), sistema acadêmico
-    Atendimento especial | Organizar sua sala | Somente administração
+    Atendimento especial | Organizar sua sala | Somente secretaria
   }
   ..
   <b>Histórico de participação
@@ -352,7 +352,7 @@ T16 --> T17
 @endsalt
 ```
 
-- **UC13 · RF-19, RF-20, RF-21.** O professor apenas consulta a escala; quem monta é a administração (Tela 14).
+- **UC13 · RF-19, RF-20, RF-21.** O professor apenas consulta a escala; quem monta é a secretaria (Tela 14).
 - As quantidades de material já incluem a margem de reserva.
 
 ### Tela 10 — Professor: espelho de notas
@@ -382,7 +382,7 @@ T16 --> T17
 - **UC12 · RF-26, RF-28 · RN15, RN17.** A tela é somente leitura: o professor não importa notas nem registra presença.
 - Aparecem apenas as turmas sob responsabilidade do professor.
 
-### Tela 11 — Administração: gerenciar edição
+### Tela 11 — Secretaria: gerenciar edição
 
 ```plantuml
 @startsalt
@@ -418,7 +418,7 @@ T16 --> T17
 - **UC05 · RF-05, RF-06, RF-07, RF-08.** A faixa do bônus fica sempre entre 0 e 1 (RN14).
 - Equilibrar a ocupação ou minimizar salas é uma configuração da edição, não uma regra fixa (Pesquisa, 2.7.2).
 
-### Tela 12 — Administração: importar dados acadêmicos
+### Tela 12 — Secretaria: importar dados acadêmicos
 
 ```plantuml
 @startsalt
@@ -449,7 +449,7 @@ T16 --> T17
 - **UC06 · RF-03, RF-04.** A integração com o sistema acadêmico é feita por arquivo, não em tempo real.
 - Linhas com erro ficam de fora até serem corrigidas.
 
-### Tela 13 — Administração: campi, salas e professores
+### Tela 13 — Secretaria: campi, salas e professores
 
 ```plantuml
 @startsalt
@@ -479,7 +479,7 @@ T16 --> T17
 
 - **UC07 · RF-15, RF-16 · RN07.** O ensalamento usa sempre a capacidade de prova, não a capacidade nominal.
 
-### Tela 14 — Administração: ensalamento e escala
+### Tela 14 — Secretaria: ensalamento e escala
 
 ```plantuml
 @startsalt
@@ -536,7 +536,7 @@ Ajuste manual (abre ao clicar em **Ajuste manual**):
 - **Publicar** fica bloqueado enquanto houver uma violação de regra obrigatória: sala sem aplicador, falta de capacidade, falta de sala acessível ou inscrito sem sala (UC08, A1 a A4).
 - Um ajuste manual que viole capacidade, campus ou acessibilidade é rejeitado, e a tela mostra a regra violada (UC08, A6).
 
-### Tela 15 — Administração: registrar presença
+### Tela 15 — Secretaria: registrar presença
 
 ```plantuml
 @startsalt
@@ -561,7 +561,7 @@ Ajuste manual (abre ao clicar em **Ajuste manual**):
 
 - **UC10 · RF-24.** A presença registrada aqui define quem pode receber o bônus (RN15).
 
-### Tela 16 — Administração: processar notas e bônus
+### Tela 16 — Secretaria: processar notas e bônus
 
 ```plantuml
 @startsalt
@@ -615,7 +615,7 @@ Ajuste manual (abre ao clicar em **Ajuste manual**):
 @endsalt
 ```
 
-- **UC14 · RF-29 a RF-31, RF-33, RF-34 · RN17.** A coordenação vê a mesma tela, mas restrita ao próprio curso e sem as abas administrativas.
+- **UC14 · RF-29 a RF-31, RF-33, RF-34 · RN17.** A coordenação vê a mesma tela, mas restrita ao próprio curso e sem as abas da secretaria.
 - Os dados de desempenho são agregados e, sempre que possível, anonimizados.
 
 ## Versão 1.0
@@ -623,7 +623,7 @@ Ajuste manual (abre ao clicar em **Ajuste manual**):
 A primeira versão, em texto, tinha cinco telas: Login, Inscrição do Aluno, Painel do Professor, Ensalamento e Relatórios. A versão 2.0 fez estas mudanças:
 
 - Cobre todos os casos de uso, de UC01 a UC15.
-- Retira do professor a importação de notas e o registro de presença, que passam para a administração, como definido no UC10 e no UC11.
+- Retira do professor a importação de notas e o registro de presença, que passam para a secretaria, como definido no UC10 e no UC11.
 - Troca o "esqueci minha senha" pelo acesso institucional.
 - Inclui atendimento especial com consentimento, comprovante e "Meus dados", para atender à LGPD.
 

@@ -1,13 +1,6 @@
 from rest_framework import serializers
 
-from app.models import Aluno, Inscricao, Produto
-
-
-class ProdutoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Produto
-        fields = ['id', 'nome', 'preco', 'descricao', 'disponivel']
-        read_only_fields = ['id']
+from app.models import Aluno, Inscricao
 
 
 class AlunoSerializer(serializers.ModelSerializer):

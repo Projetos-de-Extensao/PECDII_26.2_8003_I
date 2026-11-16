@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'drf_spectacular',
     'rest_framework',
+    'drf_spectacular',
     'app',
 ]
 
@@ -105,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -138,3 +138,6 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'Cadastro de alunos e inscrições do Teste de Progresso.',
     'VERSION': '0.1.0',
 }
+
+# Necessario para o login do admin funcionar pelo link do Codespaces
+CSRF_TRUSTED_ORIGINS = ['https://localhost:8000', 'https://*.app.github.dev']

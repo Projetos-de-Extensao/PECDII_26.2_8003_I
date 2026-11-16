@@ -2,13 +2,8 @@ from django.db.models import ProtectedError
 from rest_framework import status, viewsets
 from rest_framework.response import Response
 
-from app.models import Aluno, Inscricao, Produto
-from app.serializers import AlunoSerializer, InscricaoSerializer, ProdutoSerializer
-
-
-class ProdutoViewSet(viewsets.ModelViewSet):
-    queryset = Produto.objects.all()
-    serializer_class = ProdutoSerializer
+from app.models import Aluno, Inscricao
+from app.serializers import AlunoSerializer, InscricaoSerializer
 
 
 class AlunoViewSet(viewsets.ModelViewSet):

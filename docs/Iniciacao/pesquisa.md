@@ -58,7 +58,7 @@ O projeto nasce dessa dor operacional: transformar um processo semestral, manual
 
 **Dentro do escopo (Parte I — Inscrição e Nota):**
 
-- Cadastro e autenticação de alunos, professores e administradores.
+- Cadastro e autenticação de alunos, professores, coordenação e secretaria.
 - Abertura e fechamento do período de inscrição.
 - Inscrição do aluno no Teste de Progresso.
 - Seleção da disciplina de destino da nota, limitada às disciplinas em que o aluno está matriculado.
@@ -110,7 +110,7 @@ Prioridade em MoSCoW: M obrigatória, S desejável, C opcional.
 Módulo 1 — Acesso e Cadastro Base
 Código	Funcionalidade	Prior.
 RF-01	Autenticação com credencial institucional, com SSO quando disponível	M
-RF-02	Perfis de acesso: aluno, professor, coordenação, administração (RBAC)	M
+RF-02	Perfis de acesso: aluno, professor, coordenação, secretaria (RBAC)	M
 RF-03	Importação de alunos, disciplinas, turmas e matrículas via CSV do sistema acadêmico	M
 RF-04	Cadastro manual de exceções (aluno em situação especial, disciplina não importada)	S
 Módulo 2 — Edição do Teste

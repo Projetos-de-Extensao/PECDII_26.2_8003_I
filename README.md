@@ -27,3 +27,14 @@ python manage.py runserver
 - Testes: `python manage.py test` (dentro de `src/`)
 
 O `db.sqlite3` não é versionado — cada um gera o seu com `migrate`.
+
+## Perfis de acesso ao admin
+
+O `migrate` cria dois grupos automaticamente:
+
+| Grupo | O que pode fazer em `/admin/` |
+|---|---|
+| **Secretaria** | Cadastrar, editar, excluir e consultar alunos e inscrições |
+| **Coordenação** | Apenas consultar alunos e inscrições |
+
+Para dar acesso a alguém: entre no admin com um superusuário → **Usuários** → crie ou abra o usuário → marque **Membro da equipe** → em **Grupos**, adicione *Secretaria* ou *Coordenação* → salve.

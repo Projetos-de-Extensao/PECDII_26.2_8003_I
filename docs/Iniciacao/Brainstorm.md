@@ -103,7 +103,7 @@ Esta etapa do brainstorm foi direcionada à logística necessária para realiza�
 
 <p align="justify">
 
-<b>Integrante 1</b> - A administração deverá registrar quais professores estão disponíveis para participar da aplicação.
+<b>Integrante 1</b> - A secretaria deverá registrar quais professores estão disponíveis para participar da aplicação.
 
 <b>Integrante 2</b> - Cada sala ocupada deverá possuir pelo menos um professor aplicador.
 
